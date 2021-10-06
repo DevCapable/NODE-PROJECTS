@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./patials/head.ejs')%>
+<body style=" text-align: center">
+<div class="container-fluid" >
+<%- include('./patials/nav.ejs')%>
+<a href="about.html"></a>
+
+        <% if (blogs.length > 0) { %>
+            <h2>Latest post</h2>
+<!--        <% blogs.forEach(blog => { %>-->
+<!--                <h3 class="title"><%= blog.title %></h3>-->
+<!--                <p class="snippet"><%= blog.snippet %></p>-->
+<!--        <%})%>-->
+<!--        <% } else {%>-->
+<!--            <h2>No blogs to display</h2>-->
+<!--        <%}%>-->
+</div>
+
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th scope="col">TITLE</th>
+            <th scope="col">SNIPPET</th>
+        </tr>
+        </thead>
+         <% if (blogs.length > 0) { %>
+                <% blogs.forEach(blog => { %>
+                    <tbody>
+                    <tr>
+                        <td class="title"><%= blog.title %></td>
+                        <td class="snippet"><%= blog.snippet %></td>
+                    </tr>
+                    </tbody>
+                <%})%>
+
+         <% } else {%>
+            <h2>No blogs to display</h2>
+         <%}%>
+    </table>
+<%- include('./patials/footer.ejs')%>
+</body>
+</html>
