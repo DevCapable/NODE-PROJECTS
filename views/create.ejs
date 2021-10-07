@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./patials/head.ejs')%>
-<body>
+<body >
 <%- include('./patials/nav.ejs')%>
 <div class="container" >
-<form class="row g-3">
+<form class="row g-3" action="/blogs" method="post">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Title</label>
-    <input type="email" class="form-control" id="inputEmail4" class="title">
+    <input type="text" class="form-control" id="title" name="title" class="title">
   </div>
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <textarea class="form-control" class="snippet">
+    <label for="inputEmail4" class="form-label">Snippet</label>
+    <input type="text" class="form-control" id="snippet" name="snippet" class="snippet">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Body</label>
+    <textarea class="form-control" class="body" name="body">
 
     </textarea>
     <br>
@@ -20,20 +24,26 @@
     <button type="submit" class="btn btn-primary">Create</button>
   </div>
 </form>
-
-  <table class="table table-dark table-hover">
+  <table class="table table-dark table-hover" style="width: auto" align="center">
     <thead>
     <tr>
       <th scope="col">TITLE</th>
       <th scope="col">SNIPPET</th>
+      <th scope="col">BODY</th>
     </tr>
     </thead>
     <% if (blogs.length > 0) { %>
       <% blogs.forEach(blog => { %>
+
         <tbody>
+
         <tr>
-          <td class="title"><%= blog.title %></td>
-          <td class="snippet"><%= blog.snippet %></td>
+
+
+           <td class="title"><%= blog.title %></td>
+            <td class="snippet"><%= blog.snippet %></td>
+          <td class="snippet"><%= blog.body %><a href="/blogs/<%= blog._id %>"> View? </a></td>
+
         </tr>
         </tbody>
       <%})%>

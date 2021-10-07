@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./patials/head.ejs')%>
+<body style=" text-align: center">
+<div class="container-fluid" >
+    <%- include('./patials/nav.ejs')%>
+    <a href="about.html"></a>
+</div>
+            <div class="details">
+                <h2 class="title"><%= blog.title %></h2>
+                <div class="snippet">
+                    <p><%= blog.body %></p>
+                </div>
+                <a class="delete" data-doc="<%=blog._id%>">Delete</a>
+            </div>
+<%- include('./patials/footer.ejs')%>
+<script>
+    const trash = document.querySelector('a.delete');
+
+    trash.addEventListener('click', (e) => {
+        const endpoint = `/blogs/${trash.dataset.doc}`
+
+        fetch(endpoint, {
+            method: 'delete'
+        })
+        .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch((err)=>{
+                console.log(err)
+            })
+    })
+</script>
+</body>
+</html>
